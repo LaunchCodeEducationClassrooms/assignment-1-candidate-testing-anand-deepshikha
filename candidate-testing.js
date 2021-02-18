@@ -1,8 +1,7 @@
 const input = require('readline-sync');
 count=0;
 // TODO 2: modify your quiz app to ask 5 questions //
-let questions=["Who was the first American woman in space? ","True or false: 5000 meters = 5 kilometers? ","(5 + 3)/2 * 10 = ? ","Given the array [8, 'Orbit', 'Trajectory', 45], what entry is at index 2? ","What is the minimum crew size for the ISS? "];
-let correctAnswers=["Sally Ride","true","40","Trajectory","3"];
+
 
 // TODO 1.1a: Define candidateName // 
 let candidateName='';
@@ -10,7 +9,8 @@ let candidateName='';
 let question='Who was the first American woman in space? ';
 let correctAnswer='Sally Ride';
 let candidateAnswer='';
-      
+let questions=["Who was the first American woman in space? ","True or false: 5 kilometers == 5000 meters? ","(5 + 3)/2 * 10 = ? ","Given the array [8, 'Orbit', 'Trajectory', 45], what entry is at index 2? ","What is the minimum crew size for the ISS? "];
+let correctAnswers=["Sally Ride","true","40","Trajectory","3"];   
 
 let candidateAnswers=[];
 
@@ -42,13 +42,32 @@ function gradeQuiz(candidateAnswers) {
   {
     if(candidateAnswers[n].toLowerCase()==correctAnswers[n].toLowerCase())
     {
+      console.log(`Question ${n+1}: Correct!`);
       count=count+1;
     }
-  
+    else
+    {
+      console.log(`Question ${n+1}: Incorrect! Correct Answer: ${correctAnswers[n]}`);
+    }
+
   }
   let grade;
   grade=count/5*100;
-
+  console.log(`Candidate Name: ${candidateName}`);
+  for(n=0;n<questions.length;n++)
+  {
+    console.log(`${n+1}) ${questions[n]}`);
+    console.log(`Your Answer: ${candidateAnswers[n]}`);
+    console.log(`Correct Answer: ${correctAnswers[n]}`);
+    console.log('\n');
+  }
+  console.log(`>>>>>Overall Grade: ${grade}% (${count} of 5 responses correct) <<<`);
+  if(grade>=80)
+  {
+    console.log(`>>>Status: PASSED <<<`)
+  }
+  else
+    console.log(`>>>Status: FAILED <<<`)
   return grade;
 }
 
@@ -57,23 +76,7 @@ function runProgram() {
   // TODO 1.1c: Ask for candidate's name //
   console.log(`Welcome ${candidateName}`);
   askQuestion();
-  let candidateGrade=gradeQuiz(this.candidateAnswers);
-  let k;
-  let status;
-  if(candidateGrade>=80)
-    status="PASSED";
-  else
-    status="FAILED";
-  console.log(`Candidate Name: ${candidateName}`);
-  for(k=0;k<5;k++)
-  {
-    console.log(`${k+1}) ${questions[k]}`);
-    console.log(`Your Answer: ${candidateAnswers[k]}`);
-    console.log(`Correct Answer: ${correctAnswers[k]}`);
-    console.log('\n');
-  }
-  console.log(`>>>>>Overall Grade: ${candidateGrade}% (${count} of 5 responses correct) <<<`);
-  console.log(`>>>Status: ${status} <<<`)
+  gradeQuiz(this.candidateAnswers);
 }
 
 // Don't write any code below this line //
