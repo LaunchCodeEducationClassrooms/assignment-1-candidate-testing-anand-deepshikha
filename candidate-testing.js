@@ -42,12 +42,12 @@ function gradeQuiz(candidateAnswers) {
   let n;
   count=0;
   console.log(count);
-  for(n=0;n<=correctAnswers.length;n++)
+  for(n=0;n<correctAnswers.length;n++)
   {
-    if(candidateAnswers[n]==correctAnswers[n])
-  {
-    count++;
-  }
+    if(candidateAnswers[n].toLowerCase()==correctAnswers[n].toLowerCase())
+    {
+      count=count+1;
+    }
   
   }
   let grade;
