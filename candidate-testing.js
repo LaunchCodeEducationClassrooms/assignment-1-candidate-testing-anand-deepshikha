@@ -1,11 +1,8 @@
 const input = require('readline-sync');
 count=0;
 // TODO 2: modify your quiz app to ask 5 questions //
-let question1="Who was the first American woman in space?";
-let question2='True or false: 5000 meters = 5 kilometers.';
-let question3='(5 + 3)/2 * 10 = ?';
-let question4="Given the array [8, 'Orbit', 'Trajectory', 45], what entry is at index 2?";
-let question5='What is the minimum crew size for the ISS?';
+let questions=['Who was the first American woman in space? ','True or false: 5000 meters = 5 kilometers. ','(5 + 3)/2 * 10 = ? ','Given the array [8, "Orbit", "Trajectory", 45], what entry is at index 2? ','What is the minimum crew size for the ISS? '];
+let correctAnswers=['Sally Ride','true','40','Trajectory','3'];
 
 // TODO 1.1a: Define candidateName // 
 let candidateName='';
@@ -13,8 +10,8 @@ let candidateName='';
 let question='Who was the first American woman in space?';
 let correctAnswer='Sally Ride';
 let candidateAnswer='';
-let questions=[question1,question2,question3,question4,question5];
-let correctAnswers=['Sally Ride','true','40','Trajectory','3'];
+      
+
 let candidateAnswers=[];
 
 
